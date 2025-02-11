@@ -13,9 +13,9 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserResponseDto createUser(String username, String email) {
+    public UserResponseDto createUser(String username, String email, String password) {
 
-        User user = new User(username, email);
+        User user = new User(username, email, password);
 
         User savedUser = userRepository.save(user);
 
