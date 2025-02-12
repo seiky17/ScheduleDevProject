@@ -1,5 +1,6 @@
 package com.example.scheduledevelopproject.controller;
 
+import com.example.scheduledevelopproject.dto.UpdateUserRequestDto;
 import com.example.scheduledevelopproject.dto.UserRequestDto;
 import com.example.scheduledevelopproject.dto.UserResponseDto;
 import com.example.scheduledevelopproject.service.UserService;
@@ -34,7 +35,7 @@ public class UserController {
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updateUser(
             @PathVariable Long id,
-            @Validated @RequestBody UserRequestDto requestDto
+            @Validated @RequestBody UpdateUserRequestDto requestDto
     ) {
         userService.updateUser(id, requestDto.getUsername(), requestDto.getEmail());
 

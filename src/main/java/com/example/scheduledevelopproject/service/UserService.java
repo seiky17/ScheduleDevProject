@@ -35,7 +35,7 @@ public class UserService {
         findUser.updateUser(username, email);
     }
 
-    @Transactional
+
     public void deleteUser(Long id) {
         User findUser = userRepository.findByIdOrElseThrow(id);
 
