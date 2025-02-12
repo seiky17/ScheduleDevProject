@@ -6,6 +6,7 @@ import com.example.scheduledevelopproject.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,10 @@ public class LoginUserController {
     private final LoginService loginService;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute LoginUserRequestDto requestDto, HttpServletRequest request) {
-
+    public String login(
+            @Validated @ModelAttribute LoginUserRequestDto requestDto,
+            HttpServletRequest request
+    ) {
         UserResponseDto responseDto = loginService.login(requestDto.getEmail(), requestDto.getPassword());
 
         HttpSession session = request.getSession();

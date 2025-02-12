@@ -7,6 +7,7 @@ import com.example.scheduledevelopproject.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     @PostMapping
-    public ResponseEntity<ScheduleResponseDto> createSchedule(@RequestBody CreateScheduleRequestDto requestDto) {
+    public ResponseEntity<ScheduleResponseDto> createSchedule(@Validated @RequestBody CreateScheduleRequestDto requestDto) {
 
         ScheduleResponseDto scheduleResponseDto = scheduleService.save(requestDto.getTitle(), requestDto.getContents(), requestDto.getUsername());
 
@@ -45,7 +46,7 @@ public class ScheduleController {
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updateSchedule(
             @PathVariable Long id,
-            @RequestBody(required = false) UpdateScheduleRequestDto requestDto
+            @Validated @RequestBody UpdateScheduleRequestDto requestDto
     ) {
         scheduleService.updateSchedule(id, requestDto.getTitle(), requestDto.getContents());
 

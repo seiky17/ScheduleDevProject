@@ -6,6 +6,7 @@ import com.example.scheduledevelopproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto requestDto) {
+    public ResponseEntity<UserResponseDto> createUser(@Validated @RequestBody UserRequestDto requestDto) {
 
         UserResponseDto userResponseDto = userService.createUser(requestDto.getUsername(), requestDto.getEmail(), requestDto.getPassword());
 
@@ -33,7 +34,7 @@ public class UserController {
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updateUser(
             @PathVariable Long id,
-            @RequestBody UserRequestDto requestDto
+            @Validated @RequestBody UserRequestDto requestDto
     ) {
         userService.updateUser(id, requestDto.getUsername(), requestDto.getEmail());
 
