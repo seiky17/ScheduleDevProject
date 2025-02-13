@@ -19,10 +19,10 @@ public class LoginFilter implements Filter {
             FilterChain chain
     ) throws IOException, ServletException {
 
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletRequest httpRequest = (HttpServletRequest) request; // 다운 캐스팅
         String requestURI = httpRequest.getRequestURI();
 
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpServletResponse httpResponse = (HttpServletResponse) response; // 다운 캐스팅
 
         // 로그인을 체크 해야하는 URL인지 검사
         if (!isWhiteList(requestURI)) {
@@ -41,6 +41,7 @@ public class LoginFilter implements Filter {
     }
 
 
+    // WHITE_LIST에 있는 문자열 존재 여부 확인 메서드
     private boolean isWhiteList(String requestURI) {
         return PatternMatchUtils.simpleMatch(WHITE_LIST, requestURI);
     }

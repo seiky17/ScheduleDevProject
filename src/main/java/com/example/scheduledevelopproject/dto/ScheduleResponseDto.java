@@ -21,6 +21,7 @@ public class ScheduleResponseDto {
         this.username = username;
     }
 
+    // Schedule 객체를 ScheduleResponseDto 객체로 변환
     public static ScheduleResponseDto toDto(Schedule schedule) {
         return new ScheduleResponseDto(schedule.getId(), schedule.getTitle(), schedule.getContents(), schedule.getUser().getUsername());
     }

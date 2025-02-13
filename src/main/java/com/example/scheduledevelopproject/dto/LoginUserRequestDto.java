@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 public class LoginUserRequestDto {
 
+    // Validation 적용
     @NotBlank
     @Email
     private final String email;

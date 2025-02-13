@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class CreateScheduleRequestDto {
 
+    // Validation 적용
     @NotNull
     @Size(max = 20, message = "제목은 20자 이하여야 합니다.")
     private final String title;

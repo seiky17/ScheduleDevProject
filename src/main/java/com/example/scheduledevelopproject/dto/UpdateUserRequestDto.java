@@ -9,6 +9,7 @@ import lombok.Getter;
 @Getter
 public class UpdateUserRequestDto {
 
+    // Validation 적용
     @NotNull
     @Size(max = 4, message = "작성자명은 4자 이하여야 합니다.")
     private final String username;

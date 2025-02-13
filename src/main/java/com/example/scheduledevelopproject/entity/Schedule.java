@@ -19,6 +19,7 @@ public class Schedule extends BaseEntity{
     @Column(nullable = false)
     private String contents;
 
+    // 객체 지향적으로 schedule 테이블과 user 테이블을 매핑
     @Setter
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -32,6 +33,7 @@ public class Schedule extends BaseEntity{
         this.contents = contents;
     }
 
+    // 할일 수정 메서드
     public void updateSchedule(String title, String contents) {
         this.title = title;
         this.contents = contents;
