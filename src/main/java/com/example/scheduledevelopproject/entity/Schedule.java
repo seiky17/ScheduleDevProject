@@ -2,11 +2,13 @@ package com.example.scheduledevelopproject.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Entity
 @Table(name = "schedule")
+@NoArgsConstructor
 public class Schedule extends BaseEntity{
 
     @Id
@@ -24,9 +26,6 @@ public class Schedule extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Schedule() { // 기본 생성자
-    }
 
     public Schedule(String title, String contents) {
         this.title = title;

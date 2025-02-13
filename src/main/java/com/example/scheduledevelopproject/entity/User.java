@@ -2,10 +2,12 @@ package com.example.scheduledevelopproject.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
 @Table(name = "user")
+@NoArgsConstructor
 public class User extends BaseEntity{
 
     @Id
@@ -20,9 +22,6 @@ public class User extends BaseEntity{
 
     @Column(nullable = false)
     private String password;
-
-    public User() {
-    }
 
     // 생성자
     public User(String username, String email, String password) {
